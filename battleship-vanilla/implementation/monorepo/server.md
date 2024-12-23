@@ -4,14 +4,24 @@
 
 ### Step 1: Set Up the Server
 
-1. **Create the `server` directory**:
+1. **Add server workspace to root `package.json`**
+
+    ```json
+    {
+        "name": "repo-name-monorepo",
+        "private": true,
+        "workspaces": ["server"]
+    }
+    ```
+
+2. **Create the `server` directory**:
 
     ```bash
     mkdir server
     cd server
     ```
 
-2. **Create a `package.json` in the `server` directory** (this can be a minimal file, as the root `package.json` will manage dependencies):
+3. **Create a `package.json` in the `server` directory** (this can be a minimal file, as the root `package.json` will manage dependencies):
 
     ```bash
     npm init -y
@@ -31,7 +41,7 @@
     }
     ```
 
-3. **Create the server code** (`index.js`):
+4. **Create the server code** (`index.js`):
 
     Inside `server/index.js`, add a simple Node.js server code:
 

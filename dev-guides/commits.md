@@ -54,4 +54,8 @@ style(notes): fix start_repo note style
 fix(notes): fix commits for battleship-vanilla
 ```
 
+```plaintext
+fix(notes): fix monorepo notes
+```
+
 [Back](index.md)

@@ -22,7 +22,7 @@ You can use guide [Start repository](../../../dev-note/start_repo.md).
     {
         "name": "repo-name-monorepo",
         "private": true,
-        "workspaces": ["server"]
+        "workspaces": []
     }
     ```
 
