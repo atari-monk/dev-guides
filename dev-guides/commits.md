@@ -65,4 +65,8 @@ fix(notes): fix monorepo notes
 - Added new dev notes.
 ```
 
+```plaintext
+docs(notes): add to journal
+```
+
 [Back](index.md)
