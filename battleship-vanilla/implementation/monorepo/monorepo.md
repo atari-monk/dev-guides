@@ -8,7 +8,7 @@ A **monorepo** centralizes dependencies at the root level, avoiding redundant `n
 
 1. **Setup repository**:
 
-You can use guide [Start repository](../../../dev-note/start_repo.md).
+    You can use guide [Start repository](../../../note/start_repo.md).
 
 2. **Create a root `package.json`**:
 
