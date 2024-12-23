@@ -42,4 +42,8 @@ chore(notes): fix monorepo, commit_message
 fix(notes): fix nav in start_repo note
 ```
 
+```plaintext
+fix(notes): fix start_repo note
+```
+
 [Back](index.md)

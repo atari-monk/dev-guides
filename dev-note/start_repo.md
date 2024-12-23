@@ -19,9 +19,21 @@
     git init
     ```
 
-3. Add prettier config
+3. Add basic files
 
-add `.prettierrc` file (for example):
+```bash
+ni .prettierrc
+ni .gitignore
+ni README.md
+```
+
+4. Open in VSCode
+
+```bash
+code .
+```
+
+4. Add prettier config content (for example):
 
 ```json
 {
@@ -31,13 +43,19 @@ add `.prettierrc` file (for example):
 }
 ```
 
-4. Add `.gitignore` file (for example):
+4. Add `.gitignore` content (for example):
 
 ```plaintext
 node_modules
 ```
 
-5. Add `README.md` file (for example):
+5. Add `README.md` content (for example):
+
+```plaintext
+# repo_name
+
+description
+```
 
 6. Publish on github as private/public with VSCode.
 
