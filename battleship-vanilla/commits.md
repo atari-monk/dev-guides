@@ -2,12 +2,16 @@
 
 # Commits
 
-1. 2024-12-23
+## 2024
+
+### 12
+
+#### 23
 
 ```plaintext
-feat(monorepo): setup monorepo
+init: initial project setup
 
-- Set up empty monorepo.
+- Created the initial project with basic configuration files.
 ```
 
 [Back](index.md)

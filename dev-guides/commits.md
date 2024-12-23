@@ -50,4 +50,8 @@ fix(notes): fix start_repo note
 style(notes): fix start_repo note style
 ```
 
+```plaintext
+fix(notes): fix commits for battleship-vanilla
+```
+
 [Back](index.md)
