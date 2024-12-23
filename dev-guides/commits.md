@@ -46,4 +46,8 @@ fix(notes): fix nav in start_repo note
 fix(notes): fix start_repo note
 ```
 
+```plaintext
+style(notes): fix start_repo note style
+```
+
 [Back](index.md)

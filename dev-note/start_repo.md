@@ -21,42 +21,42 @@
 
 3. Add basic files
 
-```bash
-ni .prettierrc
-ni .gitignore
-ni README.md
-```
+    ```bash
+    ni .prettierrc
+    ni .gitignore
+    ni README.md
+    ```
 
 4. Open in VSCode
 
-```bash
-code .
-```
+    ```bash
+    code .
+    ```
 
-4. Add prettier config content (for example):
+5. Add prettier config content (for example):
 
-```json
-{
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true
-}
-```
+    ```json
+    {
+        "tabWidth": 2,
+        "semi": false,
+        "singleQuote": true
+    }
+    ```
 
-4. Add `.gitignore` content (for example):
+6. Add `.gitignore` content (for example):
 
-```plaintext
-node_modules
-```
+    ```plaintext
+    node_modules
+    ```
 
-5. Add `README.md` content (for example):
+7. Add `README.md` content (for example):
 
-```plaintext
-# repo_name
+    ```plaintext
+    # repo_name
 
-description
-```
+    description
+    ```
 
-6. Publish on github as private/public with VSCode.
+8. Publish on github as private/public with VSCode.
 
 [Back](index.md)
