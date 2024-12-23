@@ -1,5 +1,3 @@
-# Deving Notes
-
 ## Project
 
 1. [dev-guides](dev-guides/index.md)
