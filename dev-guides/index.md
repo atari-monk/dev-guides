@@ -2,7 +2,7 @@
 
 Project with dev notes.
 
-1. [Design](design.md)
-2. [Commits](commits.md)
+1. [Commits](commits.md)
+2. [Design](design.md)
 
 [Main](../index.md)

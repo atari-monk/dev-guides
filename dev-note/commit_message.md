@@ -1,5 +1,4 @@
-[Content](index.md)
-[Main](../index.md)
+[Back](index.md)
 
 # Git commit message guide
 
@@ -100,5 +99,4 @@ refactor(user): simplify login validation logic
 
 This format helps improve the clarity and traceability of your code changes, making it easier for others (and yourself) to understand the history of the project.
 
-[Content](index.md)
-[Main](../index.md)
+[Back](index.md)

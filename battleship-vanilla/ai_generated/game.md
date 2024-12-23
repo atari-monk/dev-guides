@@ -1,7 +1,10 @@
-[Content](index.md)
-[Main](../index.md)
+[Back](index.md)
 
-# AI generated quick start.
+I lost original prompt.  
+This is not complete and doesn't work.  
+It contains valid syntax that can be used to aid implantation.
+
+---
 
 To create a simple version of a Battleship server-client using Socket.IO, I'll guide you through the basic structure you need. You'll need two main events: one for placing fleets (`fleetPlaced`) and one for attacking (`attack`). Here's a high-level approach to how you can implement this in the simplest way possible:
 
@@ -216,5 +219,4 @@ server.listen(PORT, () => {
 
 This setup gives you the simplest structure for a two-player Battleship game over Socket.IO. You can extend it with more complex features, but this provides the basic game loop and communication flow.
 
-[Content](index.md)
-[Main](../index.md)
+[Back](index.md)

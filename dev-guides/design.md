@@ -1,5 +1,4 @@
-[Content](index.md)
-[Main](../index.md)
+[Back](index.md)
 
 # Design
 
@@ -24,5 +23,4 @@ dev-guide (GitHub repository)
    |__ note_title.md       # A note in this "other" category
 ```
 
-[Content](index.md)
-[Main](../index.md)
+[Back](index.md)

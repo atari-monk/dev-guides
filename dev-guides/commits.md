@@ -1,9 +1,12 @@
-[Content](index.md)
-[Main](../index.md)
+[Back](index.md)
 
 # Commits
 
-1. 2024-12-22T20:04:00+01:00
+## 2024
+
+### 12
+
+#### 22
 
 ```plaintext
 chore(notes): initial commit
@@ -12,8 +15,6 @@ chore(notes): initial commit
 - Initial content of project notes and notes.
 ```
 
-2. 2024-12-22T20:36:00+01:00
-
 ```plaintext
 chore(notes): add quotes notes
 
@@ -21,5 +22,13 @@ chore(notes): add quotes notes
 - Content for fun.
 ```
 
-[Content](index.md)
-[Main](../index.md)
+#### 23
+
+```plaintext
+chore(notes): refactor nav and content
+
+- Simplified navigation links.
+- Repaired content of battleship-vanilla
+```
+
+[Back](index.md)
