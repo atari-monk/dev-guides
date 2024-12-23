@@ -31,4 +31,11 @@ chore(notes): refactor nav and content
 - Repaired content of battleship-vanilla
 ```
 
+```plaintext
+chore(notes): fix monorepo, commit_message
+
+- Simplified monorepo, commit_message notes.
+- Add start_repo note.
+```
+
 [Back](index.md)

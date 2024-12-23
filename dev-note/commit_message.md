@@ -1,10 +1,8 @@
 [Back](index.md)
 
-# Git commit message guide
+# Git commit message convention
 
-A good Git commit message format helps maintain clarity and consistency in your project's version history. Below is a commonly accepted format for Git commit messages:
-
-### General Format:
+## Format:
 
 ```
 <type>(<scope>): <short description>
@@ -14,89 +12,52 @@ A good Git commit message format helps maintain clarity and consistency in your 
 <footer (optional)>
 ```
 
-### 1. **Commit Type**:
+-   **Type**: The kind of change.
 
-The type defines the kind of change. Common commit types include:
-
--   **feat**: A new feature.
--   **fix**: A bug fix.
--   **docs**: Documentation only changes.
--   **style**: Code style changes (formatting, missing semicolons, etc.)
--   **refactor**: Refactoring code (changes that neither fix a bug nor add a feature).
--   **test**: Adding or correcting tests.
--   **chore**: Routine maintenance or tasks that don’t affect code (e.g., build, dependencies).
-
-### 2. **Scope (optional)**:
-
-The scope provides additional context about what area of the code the change relates to. For example:
-
--   `feat(auth): add login functionality`
--   `fix(api): resolve error handling`
-
-If there is no clear scope, you can omit it.
-
-### 3. **Short Description**:
-
-A brief, concise summary of the change. The description should be written in the imperative mood (e.g., "Add" instead of "Added" or "Adding"). Keep it under 50 characters if possible.
-
-### 4. **Body (optional)**:
-
-Provides a detailed explanation of what and why the change was made. This can be several lines long, depending on the complexity of the change.
-
--   Explain why the change was made.
--   How was it fixed or implemented?
--   If applicable, mention any relevant issue numbers.
-
-### 5. **Footer (optional)**:
-
-Used to reference related issues or breaking changes.
-
--   **Breaking changes**: If your commit introduces breaking changes, indicate them in the footer using the phrase `BREAKING CHANGE:`.
-
-Example with a breaking change:
-
-```
-fix(auth): handle session expiration error
-
-- Fixes the issue where the session expiration was not properly handled.
-- Also refactored the expiration handler.
-
-BREAKING CHANGE: The API for session expiration has changed. Please update your session handling logic accordingly.
+```plaintext
+feat: New feature
+fix: Bug fix
+docs: Documentation changes
+style: Code formatting (no functional changes)
+refactor: Code restructuring (no functional changes)
+test: Adding or updating tests
+chore: Miscellaneous tasks
+perf: Performance improvements
+build: Changes to the build system or dependencies
+ci: Continuous integration configuration
+revert: Reverting a previous commit
+hotfix: Urgent fix for a bug or issue
 ```
 
-### Example Git Commit Messages:
+-   **Scope**: The area of the code affected (optional) (e.g., auth, payment-handler, homepage).
+-   **Short Description**: A brief summary of the change.
+-   **Body**: An optional detailed explanation.
+-   **Footer**: Optional extra information (e.g., references to issues).
 
-1. **Simple Commit (fix)**:
+## Example
 
-```
-fix(auth): correct session expiration handling
-```
+```plaintext
+init: initial project setup
 
-2. **Feature Commit (feat)**:
+Created the initial project structure with basic configuration files. Includes README, .gitignore, and package.json for dependency management.
 
-```
-feat(search): add full-text search functionality
-```
-
-3. **Documentation Commit (docs)**:
-
-```
-docs(readme): update installation instructions
+No functional code yet.
 ```
 
-4. **Refactor Commit (refactor)**:
+```plaintext
+feat(auth): add JWT token authentication
+
+Added JWT token-based authentication to the backend. Users can now log in using their credentials, and a JWT token will be returned for further requests. This improves security and allows for scalable user sessions.
+
+Closes #45
+```
 
 ```
-refactor(user): simplify login validation logic
+fix(cart): resolve incorrect item quantity calculation
+
+Fixed an issue where the quantity of items in the shopping cart was being calculated incorrectly when the user added multiple items. This ensures the cart displays the correct number of items for checkout.
+
+Fixes #102
 ```
-
-### Summary:
-
--   Use **imperative** mood (e.g., "Add", "Fix", "Update").
--   Keep the **subject line short** (around 50 characters).
--   Provide **detailed information** in the body if needed.
--   Use the **footer** for issues or breaking changes.
-
-This format helps improve the clarity and traceability of your code changes, making it easier for others (and yourself) to understand the history of the project.
 
 [Back](index.md)

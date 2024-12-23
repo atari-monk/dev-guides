@@ -2,6 +2,7 @@
 
 Dev Notes with intention to define some structure.
 
-1. [Git Commit Message Guide](commit_message.md)
+1. [Start new repository](start_repo.md)
+2. [Git Commit Message Guide](commit_message.md)
 
 [Main](../index.md)

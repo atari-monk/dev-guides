@@ -1,68 +1,49 @@
 [Back](index.md)
 
-# Setup monorepo
+# Setup Monorepo
 
-In a true monorepo setup, dependencies are typically managed at the root level, and individual packages or services like the server should share the same `node_modules` from the root. The goal is to avoid having separate `node_modules` folders for each service.
+A **monorepo** centralizes dependencies at the root level, avoiding redundant `node_modules` folders in individual packages or services.
 
-Let me provide you with a corrected, truly monorepo-style setup where **dependencies are centralized at the root level**.
+### Instructions
 
-### Step-by-Step Guide for a Real Monorepo with Shared Dependencies
+1. **Setup repository**:
 
-### Step 1: Initialize Your Monorepo
+You can use guide [Start repository](../../../dev-note/start_repo.md).
 
-1. **Create the root directory for your monorepo**:
-
-    ```bash
-    mkdir my-monorepo
-    cd my-monorepo
-    ```
-
-2. **Initialize a new Git repository** (optional but recommended):
-
-    ```bash
-    git init
-    ```
-
-3. **Initialize a new `package.json` file at the root**:
-
-    This is where we’ll manage shared dependencies and configuration for all services.
+2. **Create a root `package.json`**:
 
     ```bash
     npm init -y
     ```
 
-4. **Set up `workspaces` in the root `package.json`**:
-
-    The `workspaces` field tells npm to treat the `server` and any other services as packages within the monorepo.
-
-    Here's an example `package.json` for the root:
+3. **Enable npm workspaces** by adding this to `package.json`:
 
     ```json
     {
-        "name": "my-monorepo",
+        "name": "repo-name-monorepo",
         "private": true,
         "workspaces": ["server"]
     }
     ```
 
-    The `private: true` field is required to prevent publishing the root package.
+4. **Install all dependencies from the root**:
 
-### Step 2: Run the Monorepo
+    install packages
 
-To install all dependencies for all services and packages in the monorepo, run the following from the root directory:
+    ```bash
+    npm i package package_2 package_3
+    ```
 
-```bash
-npm install
-```
+    or state dependencies in package.json and run
 
-This will install dependencies for both the `server` and `client` services, and they will share the same `node_modules` folder at the root.
+    ```bash
+    npm i
+    ```
 
-### Summary
+### Key Points
 
--   **Monorepo Structure**: Dependencies are installed at the root, and each service (like `server`) refers to those dependencies.
--   **Centralized Dependencies**: Instead of having `node_modules` in each service, they are shared and managed at the root.
--   **npm Workspaces**: These allow you to manage multiple services within one repo, and npm will handle linking them automatically.
-
-This setup avoids redundancy, as all services share the same set of dependencies, and it's a true monorepo in that regard. Let me know if you have any further questions!
+-   **Structure**: Centralized `node_modules` at the root.
+-   **Dependencies**: Shared across all services (`server`, etc.).
+-   **npm Workspaces**: Automates linking between packages.
 
 [Back](index.md)
