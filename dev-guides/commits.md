@@ -69,4 +69,8 @@ fix(notes): fix monorepo notes
 docs(notes): add to journal
 ```
 
+```plaintext
+fix(index): fixes to main index
+```
+
 [Back](index.md)
