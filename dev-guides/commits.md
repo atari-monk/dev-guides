@@ -58,4 +58,11 @@ fix(notes): fix commits for battleship-vanilla
 fix(notes): fix monorepo notes
 ```
 
+```plaintext
+fix(notes): fix monorepo notes
+
+- Fixes to monorepo in battleship-vanilla after implementation and tests.
+- Added new dev notes.
+```
+
 [Back](index.md)

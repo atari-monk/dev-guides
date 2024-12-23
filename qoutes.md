@@ -4,7 +4,7 @@
 
 ## Mark Twain
 
-### **Most men die at 27, we just bury them at 72**
+### **"Most men die at 27, we just bury them at 72."**
 
 ## Me
 

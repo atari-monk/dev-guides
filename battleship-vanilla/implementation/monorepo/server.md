@@ -19,6 +19,7 @@
     ```bash
     mkdir server
     cd server
+    mkdir src
     ```
 
 3. **Create a `package.json` in the `server` directory** (this can be a minimal file, as the root `package.json` will manage dependencies):
@@ -36,12 +37,17 @@
         "name": "server",
         "main": "index.js",
         "scripts": {
-            "start": "node index.js"
+            "start": "node src/index.js"
         }
     }
     ```
 
 4. **Create the server code** (`index.js`):
+
+    ```bash
+    cd src
+    ni index.js
+    ```
 
     Inside `server/index.js`, add a simple Node.js server code:
 

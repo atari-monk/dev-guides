@@ -34,37 +34,51 @@ For example:
     npm install react react-dom
     ```
 
-4. **Add code to the `client` service** (you can set up a React app, for example).
+4. **Here’s a basic structure for a vanilla web project:**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Server Message</title>
-        <script>
-            async function fetchServerMessage() {
-                try {
-                    const response = await fetch("http://localhost:3000");
-                    const message = await response.text();
-                    document.getElementById("serverMessage").innerText =
-                        message;
-                } catch (error) {
-                    document.getElementById("serverMessage").innerText =
-                        "Failed to connect to server.";
-                    console.error("Error fetching server message:", error);
+    ```plaintext
+    /my-project
+    ├── index.html       (Main entry HTML file)
+    ├── /assets          (Folder for images, fonts, etc.)
+    ├── /css             (Folder for stylesheets)
+    ├── /js              (Folder for JavaScript files)
+    └── /lib             (Optional folder for libraries)
+    ```
+
+5. **Add code to the `client` service** (you can set up a React app, for example).
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+            />
+            <title>Server Message</title>
+            <script>
+                async function fetchServerMessage() {
+                    try {
+                        const response = await fetch("http://localhost:3000");
+                        const message = await response.text();
+                        document.getElementById("serverMessage").innerText =
+                            message;
+                    } catch (error) {
+                        document.getElementById("serverMessage").innerText =
+                            "Failed to connect to server.";
+                        console.error("Error fetching server message:", error);
+                    }
                 }
-            }
 
-            window.onload = fetchServerMessage;
-        </script>
-    </head>
-    <body>
-        <h1>Server Message</h1>
-        <p id="serverMessage">Loading...</p>
-    </body>
-</html>
-```
+                window.onload = fetchServerMessage;
+            </script>
+        </head>
+        <body>
+            <h1>Server Message</h1>
+            <p id="serverMessage">Loading...</p>
+        </body>
+    </html>
+    ```
 
 [Back](index.md)

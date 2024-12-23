@@ -17,6 +17,6 @@ https://github.com/atari-monk
 
 ### Notes
 
-1. [Dev Note](dev-note/index.md)
+1. [Dev Note](note/index.md)
 2. [Journal](journal/index.md)
 3. [Qoutes](qoutes.md)
