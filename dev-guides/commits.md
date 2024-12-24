@@ -83,4 +83,10 @@ fix(index): fixes to main index
 fix(link): fix link in monorepo note
 ```
 
+#### 23
+
+```plaintext
+docs(socket.io): add client doc
+```
+
 [Back](index.md)

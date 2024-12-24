@@ -1,3 +1,5 @@
+[Back](index.md)
+
 # Client
 
 Basic socket.io client to test connection with server using ping event.
@@ -49,3 +51,5 @@ Basic socket.io client to test connection with server using ping event.
     </body>
 </html>
 ```
+
+[Back](index.md)
