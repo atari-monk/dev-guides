@@ -99,4 +99,8 @@ refactor(docs): refactor docs
 - add to commits
 ```
 
+```plaintext
+docs(shared): add shared library doc
+```
+
 [Back](index.md)

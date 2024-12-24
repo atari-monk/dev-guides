@@ -38,4 +38,10 @@ feat(socket.io): init socket.io
 - Add socket.io server/client with ping feature.
 ```
 
+```plaintext
+feat(lib): init shared library 
+
+- Setup shared code library for client and server
+```
+
 [Back](index.md)
