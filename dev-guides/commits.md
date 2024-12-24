@@ -103,4 +103,8 @@ refactor(docs): refactor docs
 docs(shared): add shared library doc
 ```
 
+```plaintext
+docs(reconnect): add reconnect feature doc
+```
+
 [Back](index.md)
