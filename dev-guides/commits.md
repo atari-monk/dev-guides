@@ -89,4 +89,14 @@ fix(link): fix link in monorepo note
 docs(socket.io): add client doc
 ```
 
+#### 24
+
+```plaintext
+refactor(docs): refactor docs
+
+- Remove ai generated section
+- rename implementation to feature
+- add to commits
+```
+
 [Back](index.md)
