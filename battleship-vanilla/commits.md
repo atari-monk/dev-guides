@@ -50,4 +50,11 @@ feat(lib): init shared library
 refactor(html): extract js, css from html
 ```
 
+```plaintext
+refactor(client): extract client, ping
+
+- Encapsulated SocketClient class.
+- Encapsulated Ping class.
+```
+
 [Back](index.md)

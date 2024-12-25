@@ -121,4 +121,8 @@ docs(html): add html_template doc
 fix(notes): fix mistakes in notes
 ```
 
+```plaintext
+docs(feature): add client, ping feature
+```
+
 [Back](index.md)
