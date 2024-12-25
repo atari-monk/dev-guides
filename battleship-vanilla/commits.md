@@ -39,9 +39,15 @@ feat(socket.io): init socket.io
 ```
 
 ```plaintext
-feat(lib): init shared library 
+feat(lib): init shared library
 
 - Setup shared code library for client and server
+```
+
+#### 25
+
+```plaintext
+refactor(html): extract js, css from html
 ```
 
 [Back](index.md)

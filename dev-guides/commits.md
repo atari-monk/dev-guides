@@ -117,4 +117,8 @@ docs(reconnect): add reconnect feature, refactor doc
 docs(html): add html_template doc
 ```
 
+```plaintext
+fix(notes): fix mistakes in notes
+```
+
 [Back](index.md)

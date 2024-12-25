@@ -7,7 +7,7 @@
 
 1. [Dev Note](note/index.md)
 2. [Journal](journal/index.md)
-3. [Qoutes](qoutes.md)
+3. [Quotes](quotes.md)
 
 ---
 

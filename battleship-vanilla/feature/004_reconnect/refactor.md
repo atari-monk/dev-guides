@@ -13,7 +13,6 @@ class PlayerIdService {
         this.playerId = this.getOrCreatePlayerId();
     }
 
-    // Retrieves the player ID or generates a new one if it doesn't exist
     getOrCreatePlayerId() {
         let playerId = localStorage.getItem(this.playerIdKey);
         if (!playerId) {
@@ -23,18 +22,15 @@ class PlayerIdService {
         return playerId;
     }
 
-    // Generates a simple unique ID
     generateUniqueId() {
         return "player-" + Math.random().toString(36).substr(2, 9);
     }
 
-    // Gets the player ID
     getPlayerId() {
         return this.playerId;
     }
 }
 
-// Usage example
 const playerIdService = new PlayerIdService();
 console.log(playerIdService.getPlayerId());
 ```
@@ -55,18 +51,16 @@ class SocketService {
     }
 
     setupListeners() {
-        // Handle initial connection and registration
         this.socket.on("connect", () => {
+            console.log(`Connected with player ID: ${this.playerId}`);
             this.registerPlayer();
         });
 
-        // Handle reconnections
         this.socket.on("reconnect", () => {
             console.log(`Reconnected with player ID: ${this.playerId}`);
             this.registerPlayer();
         });
 
-        // Handle disconnections
         this.socket.on("disconnect", () => {
             console.log("Disconnected. Trying to reconnect...");
         });
@@ -78,8 +72,7 @@ class SocketService {
 }
 
 // Usage
-// Assuming `io` is the Socket.IO client library and `playerId` is defined
-const socket = io(); // Initialize the Socket.IO client
+const socket = io();
 const playerId = "examplePlayerId";
 const socketService = new SocketService(socket, playerId);
 ```
@@ -98,8 +91,8 @@ Here's how you can encapsulate your code into a class to manage player sessions 
 ```javascript
 class PlayerSessionService {
     constructor(io) {
-        this.io = io; // Reference to the socket.io instance
-        this.playerSessions = {}; // Store player sessions
+        this.io = io;
+        this.playerSessions = {};
         this.initializeSocketEvents();
     }
 
@@ -107,12 +100,10 @@ class PlayerSessionService {
         this.io.on("connection", (socket) => {
             console.log("New connection: " + socket.id);
 
-            // Listen for the player registration event
             socket.on("registerPlayer", (playerId) => {
                 this.registerPlayer(socket, playerId);
             });
 
-            // Handle disconnections
             socket.on("disconnect", () => {
                 this.handleDisconnect(socket);
             });
@@ -122,17 +113,14 @@ class PlayerSessionService {
     registerPlayer(socket, playerId) {
         console.log("Player connected with ID: " + playerId);
 
-        // Store the player session based on player ID
         this.playerSessions[playerId] = socket.id;
 
-        // Send the player a welcome message or reconnection confirmation
         socket.emit("welcome", `Welcome back, player ${playerId}`);
     }
 
     handleDisconnect(socket) {
         console.log("Player disconnected: " + socket.id);
 
-        // Optionally remove the player from sessions
         const playerId = Object.keys(this.playerSessions).find(
             (id) => this.playerSessions[id] === socket.id
         );
@@ -144,9 +132,9 @@ class PlayerSessionService {
     }
 }
 
-// Example usage:
-// const io = require('socket.io')(server); // Pass your server instance here
-// const playerSessionService = new PlayerSessionService(io);
+// Usage:
+const io = require("socket.io")(server);
+const playerSessionService = new PlayerSessionService(io);
 ```
 
 ### Explanation:
