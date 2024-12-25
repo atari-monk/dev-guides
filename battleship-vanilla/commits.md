@@ -57,4 +57,11 @@ refactor(client): extract client, ping
 - Encapsulated Ping class.
 ```
 
+```plaintext
+feat(libs): add client, server libs
+
+- Add server_lib, client_lib.
+- Encapsulated client, server classes.
+```
+
 [Back](index.md)

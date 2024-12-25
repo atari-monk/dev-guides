@@ -125,4 +125,10 @@ fix(notes): fix mistakes in notes
 docs(feature): add client, ping feature
 ```
 
+#### 26
+
+```plaintext
+docs(feature): add client, server libs and encapsulation
+```
+
 [Back](index.md)
