@@ -1,6 +1,10 @@
+[Back](index.md)
+
 # Client
 
 As a refactor of feature socket.io, client feature is encapsulated/extracted.
+This can be done after extracting js and css from html.  
+Help [here](../../note/html_template.md).
 
 1. [SocketClient](#socketclient)
 
@@ -44,3 +48,5 @@ const client = new SocketClient("http://localhost:3000", {
 client.initialize();
 const socket = client.getSocket();
 ```
+
+[Back](index.md)

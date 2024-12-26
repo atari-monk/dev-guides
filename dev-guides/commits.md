@@ -131,4 +131,10 @@ docs(feature): add client, ping feature
 docs(feature): add client, server libs and encapsulation
 ```
 
+```plaintext
+refactor(feature): battleship-vanilla feature flatten
+
+- One file per feature.
+```
+
 [Back](index.md)

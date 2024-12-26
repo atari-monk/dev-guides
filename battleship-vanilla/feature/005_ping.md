@@ -1,3 +1,5 @@
+[Back](index.md)
+
 # Ping
 
 As a refactor of feature socket.io, ping feature is encapsulated/extracted.
@@ -54,3 +56,5 @@ This style puts it in left bottom of page.
 ```
 
 ##
+
+[Back](index.md)

@@ -1,3 +1,5 @@
+[Back](index.md)
+
 # Server
 
 Server is encapsulated in library and class.
@@ -83,3 +85,5 @@ Import in server
 ```javascript
 import { SocketServer } from "server_lib";
 ```
+
+[Back](index.md)
