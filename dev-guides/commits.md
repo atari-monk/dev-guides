@@ -137,4 +137,10 @@ refactor(feature): battleship-vanilla feature flatten
 - One file per feature.
 ```
 
+```plaintext
+fix(nav): remove nav links
+
+- gitpages generate link to main by default.
+```
+
 [Back](index.md)

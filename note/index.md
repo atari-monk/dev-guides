@@ -7,5 +7,3 @@ Capture recurring activity.
 2. [Git Commit Message Convention](commit_message.md)
 3. [Html Template](html_template.md)
 4. [Web Page Development Server](dev_server.md)
-
-[Main](../index.md)

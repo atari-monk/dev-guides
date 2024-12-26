@@ -1,5 +1,3 @@
-[Main](index.md)
-
 # Quotes
 
 ## Mark Twain
@@ -9,5 +7,3 @@
 ## Me
 
 ### **"Sheer existence is undeniable; human-crafted immortality, inconsequential."**
-
-[Main](index.md)
