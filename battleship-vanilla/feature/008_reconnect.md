@@ -4,7 +4,7 @@
 
 ## Content
 
-1. [Reconnect](#reconnect)
+1. [Reconnect](#reconnect-1)
 2. [Refactor](#refactor)
 
 ## Reconnect
@@ -145,6 +145,21 @@ This class encapsulates the functionality into a reusable tool that manages the 
 Here's how you can encapsulate the reconnect logic into a class:
 
 ```javascript
+const SocketEvents = {
+    Client: {
+        CONNECT: "connect",
+        RECONNECT: "reconnect",
+        DISCONNECT: "disconnect",
+        REGISTER_PLAYER: "registerPlayer",
+    },
+    Server: {
+        CONNECTION: "connection",
+        WELCOME: "welcome",
+    },
+};
+```
+
+```javascript
 class SocketService {
     constructor(socket, playerId) {
         this.socket = socket;
@@ -154,23 +169,23 @@ class SocketService {
     }
 
     setupListeners() {
-        this.socket.on("connect", () => {
+        this.socket.on(SocketEvents.Client.CONNECT, () => {
             console.log(`Connected with player ID: ${this.playerId}`);
             this.registerPlayer();
         });
 
-        this.socket.on("reconnect", () => {
+        this.socket.on(SocketEvents.Client.RECONNECT, () => {
             console.log(`Reconnected with player ID: ${this.playerId}`);
             this.registerPlayer();
         });
 
-        this.socket.on("disconnect", () => {
+        this.socket.on(SocketEvents.Client.DISCONNECT, () => {
             console.log("Disconnected. Trying to reconnect...");
         });
     }
 
     registerPlayer() {
-        this.socket.emit("registerPlayer", this.playerId);
+        this.socket.emit(SocketEvents.Client.REGISTER_PLAYER, this.playerId);
     }
 }
 
@@ -200,14 +215,14 @@ class PlayerSessionService {
     }
 
     initializeSocketEvents() {
-        this.io.on("connection", (socket) => {
+        this.io.on(SocketEvents.Server.CONNECTION, (socket) => {
             console.log("New connection: " + socket.id);
 
-            socket.on("registerPlayer", (playerId) => {
+            socket.on(SocketEvents.Client.REGISTER_PLAYER, (playerId) => {
                 this.registerPlayer(socket, playerId);
             });
 
-            socket.on("disconnect", () => {
+            socket.on(SocketEvents.Client.DISCONNECT, () => {
                 this.handleDisconnect(socket);
             });
         });
@@ -218,7 +233,10 @@ class PlayerSessionService {
 
         this.playerSessions[playerId] = socket.id;
 
-        socket.emit("welcome", `Welcome back, player ${playerId}`);
+        socket.emit(
+            SocketEvents.Server.WELCOME,
+            `Welcome back, player ${playerId}`
+        );
     }
 
     handleDisconnect(socket) {

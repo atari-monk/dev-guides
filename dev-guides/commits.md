@@ -143,4 +143,8 @@ fix(nav): remove nav links
 - gitpages generate link to main by default.
 ```
 
+```plaintext
+docs(reconnect): update doc content
+```
+
 [Back](index.md)
