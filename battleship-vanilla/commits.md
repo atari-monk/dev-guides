@@ -64,4 +64,12 @@ feat(libs): add client, server libs
 - Encapsulated client, server classes.
 ```
 
+#### 26
+
+```plaintext
+feat(reconnect): add reconnect
+
+- Unique player id
+```
+
 [Back](index.md)
