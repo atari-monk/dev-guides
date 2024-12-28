@@ -72,4 +72,17 @@ feat(reconnect): add reconnect
 - Unique player id
 ```
 
+#### 28
+
+```plaintext
+refactor: ping, reconnect
+
+- Refactor structure
+- Refactor ping, reconnect features
+```
+
+```plaintext
+fix: remove comment
+```
+
 [Back](index.md)

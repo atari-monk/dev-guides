@@ -153,4 +153,10 @@ docs(reconnect): update doc content
 docs(commits): update commits
 ```
 
+#### 28
+
+```plaintext
+docs(reconnect): update reconnect feature doc
+```
+
 [Back](index.md)

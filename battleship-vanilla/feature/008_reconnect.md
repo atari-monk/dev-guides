@@ -126,7 +126,7 @@ class PlayerIdService {
     }
 
     generateUniqueId() {
-        return "player-" + Math.random().toString(36).substr(2, 9);
+        return "player-" + Math.random().toString(36).slice(2, 9);
     }
 
     getPlayerId() {
@@ -145,8 +145,9 @@ This class encapsulates the functionality into a reusable tool that manages the 
 Here's how you can encapsulate the reconnect logic into a class:
 
 ```javascript
-const SocketEvents = {
+export const SocketEvents = {
     Client: {
+        PING: "ping",
         CONNECT: "connect",
         RECONNECT: "reconnect",
         DISCONNECT: "disconnect",
@@ -154,13 +155,14 @@ const SocketEvents = {
     },
     Server: {
         CONNECTION: "connection",
-        WELCOME: "welcome",
     },
 };
 ```
 
 ```javascript
-class SocketService {
+import { SocketEvents } from "/shared/src/index.js";
+
+export class SocketService {
     constructor(socket, playerId) {
         this.socket = socket;
         this.playerId = playerId;
@@ -169,23 +171,31 @@ class SocketService {
     }
 
     setupListeners() {
-        this.socket.on(SocketEvents.Client.CONNECT, () => {
-            console.log(`Connected with player ID: ${this.playerId}`);
-            this.registerPlayer();
-        });
+        this.socket.on(SocketEvents.Client.CONNECT, () => this.handleConnect());
+        this.socket.on(SocketEvents.Client.RECONNECT, () =>
+            this.handleReconnect()
+        );
+        this.socket.on(SocketEvents.Client.DISCONNECT, () =>
+            this.handleDisconnect()
+        );
+    }
 
-        this.socket.on(SocketEvents.Client.RECONNECT, () => {
-            console.log(`Reconnected with player ID: ${this.playerId}`);
-            this.registerPlayer();
-        });
-
-        this.socket.on(SocketEvents.Client.DISCONNECT, () => {
-            console.log("Disconnected. Trying to reconnect...");
-        });
+    handleConnect() {
+        console.log(`Connected with player ID: ${this.playerId}`);
+        this.registerPlayer();
     }
 
     registerPlayer() {
         this.socket.emit(SocketEvents.Client.REGISTER_PLAYER, this.playerId);
+    }
+
+    handleReconnect() {
+        console.log(`Reconnected with player ID: ${this.playerId}`);
+        this.registerPlayer();
+    }
+
+    handleDisconnect() {
+        console.log("Disconnected. Trying to reconnect...");
     }
 }
 
@@ -207,7 +217,9 @@ const socketService = new SocketService(socket, playerId);
 Here's how you can encapsulate your code into a class to manage player sessions and socket connections more cleanly on a server.
 
 ```javascript
-class PlayerSessionService {
+import { SocketEvents } from "shared";
+
+export class PlayerSessionService {
     constructor(io) {
         this.io = io;
         this.playerSessions = {};
@@ -216,8 +228,6 @@ class PlayerSessionService {
 
     initializeSocketEvents() {
         this.io.on(SocketEvents.Server.CONNECTION, (socket) => {
-            console.log("New connection: " + socket.id);
-
             socket.on(SocketEvents.Client.REGISTER_PLAYER, (playerId) => {
                 this.registerPlayer(socket, playerId);
             });
@@ -229,26 +239,23 @@ class PlayerSessionService {
     }
 
     registerPlayer(socket, playerId) {
-        console.log("Player connected with ID: " + playerId);
+        console.log(
+            `Connected with playerID: ${playerId}, socketID: ${socket.id}`
+        );
 
         this.playerSessions[playerId] = socket.id;
-
-        socket.emit(
-            SocketEvents.Server.WELCOME,
-            `Welcome back, player ${playerId}`
-        );
     }
 
     handleDisconnect(socket) {
-        console.log("Player disconnected: " + socket.id);
-
         const playerId = Object.keys(this.playerSessions).find(
             (id) => this.playerSessions[id] === socket.id
         );
 
         if (playerId) {
             delete this.playerSessions[playerId];
-            console.log(`Player session removed for ID: ${playerId}`);
+            console.log(
+                `Disconnected with playerID: ${playerId}, socketID ${socket.id}`
+            );
         }
     }
 }
@@ -269,6 +276,25 @@ To use the class:
 
 -   Pass your `io` instance to `PlayerSessionService` when initializing it.
 -   The class handles all socket events, simplifying your server's main logic.
+
+#### Logging
+
+Keeping logging concise, consistent and state oriented.
+
+Logging on server:  
+Server running on http://localhost:3000  
+Connected with playerID: player-v9f8li036, socketID: kQxbedd4v7m81WH1AAAB  
+Disconnected with playerID: player-v9f8li036, socketID kQxbedd4v7m81WH1AAAB  
+Connected with playerID: player-v9f8li036, socketID: Px-Ne0iAPpV4qq4LAAAD
+
+Server running on http://localhost:3000  
+Connected with playerID: player-v9f8li036, socketID: 1tRQrYtSkc2SkoNmAAAB
+
+Logging on client:  
+Connected with player ID: player-v9f8li036  
+Disconnected. Trying to reconnect...
+
+Connected with player ID: player-v9f8li036
 
 [Content](#content)  
 [Back](index.md)
