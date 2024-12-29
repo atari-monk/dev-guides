@@ -183,4 +183,11 @@ docs(content): added content
 - Refactored features in battleship-vanilla
 ```
 
+```plaintext
+docs(content): added to data service feature
+
+- Extended data service feature
+- Integration with connect feature
+```
+
 [Back](index.md)

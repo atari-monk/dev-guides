@@ -2,7 +2,15 @@
 
 # **Data Service**
 
-## **Data Service Requirements**
+## Content
+
+1. [Requirements](#requirements)
+2. [Implementation](#implementation)
+3. [Refactored](#refactored)
+
+## Requirements
+
+**Data Service Requirements**
 
 ### **Feature Description**
 
@@ -28,7 +36,9 @@
 5. **Shared Usage**:
     - Ensure the data model is compatible for use on both the **server** and **client** sides.
 
-## Initial Implementation
+## Implementation
+
+Initial Implementation
 
 Here's an initial implementation of the data model in JavaScript, with an encapsulated service layer that provides methods for managing the state. This is designed to be usable both on the server and the client.
 
@@ -107,6 +117,87 @@ dataService.removePlayer("player1");
 3. **Shared Usage**:
     - Designed to be modular and easily imported on both the client and server using ES6 imports (`import { PlayerService } from './PlayerDataModel';`).
 
-## ccc
+## Refactored
 
+Refactored Implementation with DI
+
+#### **DataService Interface**
+
+We’ll define a generic contract for the data service:
+
+```javascript
+// IDataService.js
+export class IDataService {
+    addPlayer(playerID, socketID) {
+        throw new Error("Method 'addPlayer()' must be implemented.");
+    }
+
+    getPlayer(playerID) {
+        throw new Error("Method 'getPlayer()' must be implemented.");
+    }
+
+    updateSocketID(playerID, newSocketID) {
+        throw new Error("Method 'updateSocketID()' must be implemented.");
+    }
+
+    removePlayer(playerID) {
+        throw new Error("Method 'removePlayer()' must be implemented.");
+    }
+
+    listPlayers() {
+        throw new Error("Method 'listPlayers()' must be implemented.");
+    }
+}
+```
+
+---
+
+#### **Concrete DataService Implementation**
+
+```javascript
+import { IDataService } from "./IDataService";
+
+export class DataService extends IDataService {
+    constructor() {
+        super();
+        this.players = new Map();
+    }
+
+    addPlayer(playerID, socketID) {
+        if (this.players.has(playerID)) {
+            throw new Error(`Player with ID ${playerID} already exists.`);
+        }
+        this.players.set(playerID, { playerID, socketID });
+    }
+
+    getPlayer(playerID) {
+        return this.players.get(playerID) || null;
+    }
+
+    updateSocketID(playerID, newSocketID) {
+        const player = this.getPlayer(playerID);
+        if (!player) {
+            throw new Error(`Player with ID ${playerID} not found.`);
+        }
+        player.socketID = newSocketID;
+    }
+
+    removePlayer(playerID) {
+        if (!this.players.has(playerID)) {
+            throw new Error(`Player with ID ${playerID} not found.`);
+        }
+        this.players.delete(playerID);
+    }
+
+    listPlayers() {
+        return Array.from(this.players.values());
+    }
+}
+```
+
+[See integration with connect feature](008_connect.md#integration)
+
+##
+
+[Content](#content)  
 [Back](index.md)

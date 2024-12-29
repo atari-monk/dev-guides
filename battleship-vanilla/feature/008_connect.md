@@ -4,8 +4,9 @@
 
 ## Content
 
-1. [Reconnect](#connect-1)
-2. [Refactor](#refactor)
+1. [Connect](#connect-1)
+2. [Refactored](#refactored)
+3. [Integration](#integration)
 
 ## Connect
 
@@ -101,9 +102,7 @@ io.on("connection", (socket) => {
 
 This method ensures that the player is always recognized, even if they disconnect and reconnect, by relying on the browser's `localStorage` to persist a unique player ID.
 
-[Content](#content)
-
-## Refactor
+## Refactored
 
 ### Client IdService
 
@@ -308,6 +307,103 @@ Connected with player ID: player-v9f8li036
 Disconnected. Trying to reconnect...
 
 Connected with player ID: player-v9f8li036
+
+## Integration
+
+Integration with data service.
+
+### **Server ConnectService with DI**
+
+```javascript
+import { SocketEvents } from "shared";
+
+export class ConnectService {
+    constructor(io, dataService) {
+        this.io = io;
+        this.dataService = dataService;
+        this.initializeSocketEvents();
+    }
+
+    initializeSocketEvents() {
+        this.io.on(SocketEvents.Server.CONNECTION, (socket) => {
+            socket.on(SocketEvents.Client.REGISTER_PLAYER, (playerId) => {
+                this.registerPlayer(socket, playerId);
+            });
+
+            socket.on(SocketEvents.Client.DISCONNECT, () => {
+                this.handleDisconnect(socket);
+            });
+        });
+    }
+
+    registerPlayer(socket, playerId) {
+        console.log(
+            `Connected with playerID: ${playerId}, socketID: ${socket.id}`
+        );
+
+        try {
+            this.dataService.addPlayer(playerId, socket.id);
+        } catch (error) {
+            console.error(`Error registering player: ${error.message}`);
+        }
+    }
+
+    handleDisconnect(socket) {
+        const playerId = this.getPlayerIdBySocket(socket.id);
+
+        if (playerId) {
+            this.dataService.removePlayer(playerId);
+            console.log(
+                `Disconnected with playerID: ${playerId}, socketID: ${socket.id}`
+            );
+        }
+    }
+
+    getPlayerIdBySocket(socketID) {
+        const players = this.dataService.listPlayers();
+        const player = players.find((p) => p.socketID === socketID);
+        return player ? player.playerID : null;
+    }
+}
+```
+
+---
+
+### **Key Features in This Design**
+
+1. **Dependency Injection (DI)**:
+
+    - The `ConnectService` doesn’t depend directly on `DataService`. Instead, it works with any implementation of the `IDataService` interface. This makes testing and replacing dependencies easier.
+
+2. **Testability**:
+
+    - Mock services can be injected into `ConnectService` for unit testing.
+
+3. **SOLID Design**:
+
+    - The code adheres to SRP, OCP, and DIP by separating concerns and relying on abstractions.
+
+4. **Scalability**:
+    - Future changes to the player management logic (e.g., moving from `Map` to a database) don’t require modifications to `ConnectService`.
+
+---
+
+### **Example Usage**
+
+```javascript
+import { Server } from "socket.io";
+import { DataService } from "./DataService";
+import { ConnectService } from "./ConnectService";
+
+const io = new Server();
+const dataService = new DataService();
+const connectService = new ConnectService(io, dataService);
+
+io.listen(3000);
+console.log("Socket server listening on port 3000");
+```
+
+##
 
 [Content](#content)  
 [Back](index.md)

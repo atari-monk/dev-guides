@@ -91,4 +91,10 @@ fix: remove comment
 feat(data_service): add initial data service feature
 ```
 
+```plaintext
+refactor: rename features
+
+- Folder with feature name and code convention
+```
+
 [Back](index.md)
