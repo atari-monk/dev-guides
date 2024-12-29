@@ -8,6 +8,8 @@
 1. [Dev Note](note/index.md)
 2. [Journal](journal/index.md)
 3. [Quotes](quotes.md)
+4. [Content](content.md)
+5. [Lists](lists.md)
 
 ---
 

@@ -159,4 +159,13 @@ docs(commits): update commits
 docs(reconnect): update reconnect feature doc
 ```
 
+```plaintext
+docs(content): added content
+
+- Content page
+- Lists page
+- Video log journal
+- battleship-vanilla feature 009
+```
+
 [Back](index.md)

@@ -1,4 +1,4 @@
-[Back](index.md)
+[Back](../index.md)
 
 # Journal 2024
 
@@ -27,4 +27,11 @@ Is making coding like writing a book.
 This is more human friendly.  
 It has properties like safe doors on submarine, dna blueprint and lego bricks.
 
-[Back](index.md)
+### 29
+
+Project:  
+I prefer not to overinvest.  
+Make it small at first.  
+Let it progress by accretion.
+
+[Back](../index.md)
