@@ -1,8 +1,8 @@
 [Back](index.md)
 
-# **Data Model**
+# **Data Service**
 
-## **Data Model Requirements**
+## **Data Service Requirements**
 
 ### **Feature Description**
 
@@ -33,21 +33,24 @@
 Here's an initial implementation of the data model in JavaScript, with an encapsulated service layer that provides methods for managing the state. This is designed to be usable both on the server and the client.
 
 ```javascript
-// PlayerDataModel.js
+// DataModel.js
 
-class PlayerDataModel {
+export class DataModel {
     constructor(playerID, socketID) {
         this.playerID = playerID;
         this.socketID = socketID;
     }
 }
+```
 
-class PlayerService {
+```javascript
+// DataService.js
+
+export class DataService {
     constructor() {
-        this.players = new Map(); // Store players using playerID as the key
+        this.players = new Map();
     }
 
-    // Add a new player
     addPlayer(playerID, socketID) {
         if (this.players.has(playerID)) {
             throw new Error(`Player with ID ${playerID} already exists.`);
@@ -56,12 +59,10 @@ class PlayerService {
         this.players.set(playerID, player);
     }
 
-    // Get a player by playerID
     getPlayer(playerID) {
         return this.players.get(playerID) || null;
     }
 
-    // Update a player's socketID
     updateSocketID(playerID, newSocketID) {
         const player = this.players.get(playerID);
         if (!player) {
@@ -70,7 +71,6 @@ class PlayerService {
         player.socketID = newSocketID;
     }
 
-    // Remove a player by playerID
     removePlayer(playerID) {
         if (!this.players.has(playerID)) {
             throw new Error(`Player with ID ${playerID} not found.`);
@@ -78,20 +78,19 @@ class PlayerService {
         this.players.delete(playerID);
     }
 
-    // List all players
     listPlayers() {
         return Array.from(this.players.values());
     }
 }
+```
 
+```javascript
 // Example usage (works on both server and client):
-// const playerService = new PlayerService();
-// playerService.addPlayer("player1", "socket123");
-// console.log(playerService.getPlayer("player1"));
-// playerService.updateSocketID("player1", "socket456");
-// playerService.removePlayer("player1");
-
-export { PlayerDataModel, PlayerService };
+const dataService = new DataService();
+dataService.addPlayer("player1", "socket123");
+console.log(dataService.getPlayer("player1"));
+dataService.updateSocketID("player1", "socket456");
+dataService.removePlayer("player1");
 ```
 
 ### **Key Features**:

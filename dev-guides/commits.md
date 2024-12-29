@@ -168,4 +168,10 @@ docs(content): added content
 - battleship-vanilla feature 009
 ```
 
+#### 29
+
+```plaintext
+fix(data_service): renames, refactor
+```
+
 [Back](index.md)

@@ -85,4 +85,10 @@ refactor: ping, reconnect
 fix: remove comment
 ```
 
+#### 29
+
+```plaintext
+feat(data_service): add initial data service feature
+```
+
 [Back](index.md)
