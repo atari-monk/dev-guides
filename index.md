@@ -10,6 +10,7 @@
 3. [Quotes](quotes.md)
 4. [Content](content.md)
 5. [Lists](lists.md)
+6. [DIY](diy/index.md)
 
 ---
 

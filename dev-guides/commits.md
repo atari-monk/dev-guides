@@ -174,4 +174,13 @@ docs(content): added content
 fix(data_service): renames, refactor
 ```
 
+```plaintext
+docs(content): added content
+
+- DIY page
+- Background Media Log
+- Assumptions in battleship-vanilla
+- Refactored features in battleship-vanilla
+```
+
 [Back](index.md)

@@ -1,13 +1,13 @@
 [Back](index.md)
 
-# Reconnect
+# Connect
 
 ## Content
 
-1. [Reconnect](#reconnect-1)
+1. [Reconnect](#connect-1)
 2. [Refactor](#refactor)
 
-## Reconnect
+## Connect
 
 In a typical Socket.IO setup for a server-client architecture, handling reconnections involves ensuring that the client can reconnect seamlessly after a disconnection, while maintaining some form of unique identification for the player. One of the simplest and standard ways to achieve this is by using a **unique player ID** stored in the browser's **localStorage**.
 
@@ -105,44 +105,53 @@ This method ensures that the player is always recognized, even if they disconnec
 
 ## Refactor
 
-### Client PlayerIdService
+### Client IdService
 
 Here's the encapsulated version of your code in a class:
 
+client_lib/src/connect
+
 ```javascript
-class PlayerIdService {
+export class IdService {
     constructor() {
-        this.playerIdKey = "playerId";
-        this.playerId = this.getOrCreatePlayerId();
+        this.idKey = "battleship_vanilla_id";
+        this.id = this.getOrGenerateId();
     }
 
-    getOrCreatePlayerId() {
-        let playerId = localStorage.getItem(this.playerIdKey);
-        if (!playerId) {
-            playerId = this.generateUniqueId();
-            localStorage.setItem(this.playerIdKey, playerId);
+    getOrGenerateId() {
+        let id = localStorage.getItem(this.idKey);
+        if (!id) {
+            id = this.generateId();
         }
-        return playerId;
+        return id;
+    }
+
+    generateId() {
+        const id = this.generateUniqueId();
+        localStorage.setItem(this.idKey, id);
+        return id;
     }
 
     generateUniqueId() {
-        return "player-" + Math.random().toString(36).slice(2, 9);
+        return Math.random().toString(36).slice(2, 9);
     }
 
-    getPlayerId() {
-        return this.playerId;
+    getId() {
+        return this.id;
     }
 }
 
-const playerIdService = new PlayerIdService();
-console.log(playerIdService.getPlayerId());
+const idService = new IdService();
+console.log(idService.getId());
 ```
 
 This class encapsulates the functionality into a reusable tool that manages the retrieval or creation of a unique player ID.
 
-### Client SocketService
+### Client ConnectService
 
 Here's how you can encapsulate the reconnect logic into a class:
+
+shared/src/connect
 
 ```javascript
 export const SocketEvents = {
@@ -159,10 +168,12 @@ export const SocketEvents = {
 };
 ```
 
+client_lib/src/connect
+
 ```javascript
 import { SocketEvents } from "/shared/src/index.js";
 
-export class SocketService {
+export class ConnectService {
     constructor(socket, playerId) {
         this.socket = socket;
         this.playerId = playerId;
@@ -212,14 +223,16 @@ const socketService = new SocketService(socket, playerId);
 3. **Maintainability:** The class isolates the connection logic, making the code easier to manage and extend.
 4. **Method Extraction:** The `registerPlayer` method is extracted for clarity and reusability.
 
-### Server PlayerSessionService
+### Server ConnectService
 
 Here's how you can encapsulate your code into a class to manage player sessions and socket connections more cleanly on a server.
+
+server_lib/src/connect
 
 ```javascript
 import { SocketEvents } from "shared";
 
-export class PlayerSessionService {
+export class ConnectService {
     constructor(io) {
         this.io = io;
         this.playerSessions = {};
@@ -262,7 +275,7 @@ export class PlayerSessionService {
 
 // Usage:
 const io = require("socket.io")(server);
-const playerSessionService = new PlayerSessionService(io);
+const connectService = new ConnectService(io);
 ```
 
 #### Explanation:

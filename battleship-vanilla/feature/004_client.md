@@ -6,14 +6,14 @@ As a refactor of feature socket.io, client feature is encapsulated/extracted.
 This can be done after extracting js and css from html.  
 Help [here](../../note/html_template.md).
 
-1. [SocketClient](#socketclient)
+1. [Client](#client)
 
-## SocketClient
+## Client
 
 Class encapsulates socket.io client.
 
 ```javascript
-export class SocketClient {
+export class Client {
     constructor(url, options) {
         this.url = url;
         this.options = options;
@@ -38,9 +38,9 @@ export class SocketClient {
 Usage
 
 ```javascript
-import { SocketClient } from "/shared/src/index.js";
+import { Client } from "/shared/src/index.js";
 
-const client = new SocketClient("http://localhost:3000", {
+const client = new Client("http://localhost:3000", {
     cors: {
         origin: "*",
     },

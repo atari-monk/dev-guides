@@ -4,14 +4,14 @@
 
 As a refactor of feature socket.io, ping feature is encapsulated/extracted.
 
-1. [ClientPing](#clientping)
+1. [PingService](#pingService)
 
-## ClientPing
+## PingService
 
 Class creates div with ping text from server.
 
 ```javascript
-export class ClientPing {
+export class PingService {
     constructor(socket) {
         this.socket = socket;
         this.pingDiv = this.createPingDiv();

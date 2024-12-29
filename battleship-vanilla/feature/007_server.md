@@ -6,13 +6,15 @@ Server is encapsulated in library and class.
 
 ## Code
 
+server_lib/src/server
+
 ```javascript
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
-export class SocketServer {
+export class Server {
     constructor(port = 3000) {
         this.port = port;
         this.app = express();
@@ -77,13 +79,13 @@ export class SocketServer {
 Export
 
 ```javascript
-export * from "./SocketServer.js";
+export * from "./Server.js";
 ```
 
 Import in server
 
 ```javascript
-import { SocketServer } from "server_lib";
+import { Server } from "server_lib";
 ```
 
 [Back](index.md)
