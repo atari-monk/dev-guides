@@ -97,4 +97,8 @@ refactor: rename features
 - Folder with feature name and code convention
 ```
 
+```plaintext
+feat(data_service): integration with connect feature
+```
+
 [Back](index.md)

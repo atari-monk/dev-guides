@@ -349,7 +349,7 @@ export class ConnectService {
     }
 
     handleDisconnect(socket) {
-        const playerId = this.getPlayerIdBySocket(socket.id);
+        const playerId = this.dataService.getPlayerIdBySocket(socket.id);
 
         if (playerId) {
             this.dataService.removePlayer(playerId);
@@ -357,12 +357,6 @@ export class ConnectService {
                 `Disconnected with playerID: ${playerId}, socketID: ${socket.id}`
             );
         }
-    }
-
-    getPlayerIdBySocket(socketID) {
-        const players = this.dataService.listPlayers();
-        const player = players.find((p) => p.socketID === socketID);
-        return player ? player.playerID : null;
     }
 }
 ```

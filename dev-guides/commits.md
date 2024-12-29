@@ -190,4 +190,8 @@ docs(content): added to data service feature
 - Integration with connect feature
 ```
 
+```plaintext
+fix(data_service): refactor
+```
+
 [Back](index.md)

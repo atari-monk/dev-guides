@@ -136,6 +136,10 @@ export class IDataService {
         throw new Error("Method 'getPlayer()' must be implemented.");
     }
 
+    getPlayerIdBySocket(socketID) {
+        throw new Error("Method 'getPlayerIdBySocket()' must be implemented.");
+    }
+
     updateSocketID(playerID, newSocketID) {
         throw new Error("Method 'updateSocketID()' must be implemented.");
     }
@@ -172,6 +176,12 @@ export class DataService extends IDataService {
 
     getPlayer(playerID) {
         return this.players.get(playerID) || null;
+    }
+
+    getPlayerIdBySocket(socketID) {
+        const players = this.listPlayers();
+        const player = players.find((p) => p.socketID === socketID);
+        return player ? player.playerID : null;
     }
 
     updateSocketID(playerID, newSocketID) {
