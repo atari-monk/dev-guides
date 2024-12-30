@@ -2,6 +2,7 @@
 
 1. [dev-guides](dev-guides/index.md)
 2. [battleship-vanilla](battleship-vanilla/index.md)
+3. [mini-game](mini-game/index.md)
 
 ## Notes
 

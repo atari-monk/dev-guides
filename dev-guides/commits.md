@@ -200,4 +200,8 @@ fix(data_service): refactor
 docs(grid): grid feature docs
 ```
 
+```plaintext
+docs(mini-game): mini-game project init
+```
+
 [Back](index.md)
