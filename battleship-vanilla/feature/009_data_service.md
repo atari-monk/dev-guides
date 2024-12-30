@@ -7,6 +7,7 @@
 1. [Requirements](#requirements)
 2. [Implementation](#implementation)
 3. [Refactored](#refactored)
+4. [Extention](#extention)
 
 ## Requirements
 
@@ -164,6 +165,38 @@ import { IDataService } from "./IDataService";
 export class DataService extends IDataService {
     constructor() {
         super();
+        //...
+```
+
+[See integration with connect feature](008_connect.md#integration)
+
+## Extention
+
+Extention for grid feature.
+
+### Extended data model.
+
+```javascript
+import { GridModel } from "./GridModel.js";
+
+export class DataModel {
+    constructor(playerID, socketID, gridSize = 10) {
+        this.playerID = playerID;
+        this.socketID = socketID;
+        this.grid = new GridModel(gridSize);
+    }
+}
+```
+
+### Extended data service.
+
+```javascript
+import { IDataService } from "./IDataService.js";
+import { DataModel } from "./DataModel.js";
+
+export class DataService extends IDataService {
+    constructor() {
+        super();
         this.players = new Map();
     }
 
@@ -171,7 +204,8 @@ export class DataService extends IDataService {
         if (this.players.has(playerID)) {
             throw new Error(`Player with ID ${playerID} already exists.`);
         }
-        this.players.set(playerID, { playerID, socketID });
+        const player = new DataModel(playerID, socketID);
+        this.players.set(playerID, player);
     }
 
     getPlayer(playerID) {
@@ -185,7 +219,7 @@ export class DataService extends IDataService {
     }
 
     updateSocketID(playerID, newSocketID) {
-        const player = this.getPlayer(playerID);
+        const player = this.players.get(playerID);
         if (!player) {
             throw new Error(`Player with ID ${playerID} not found.`);
         }
@@ -202,10 +236,41 @@ export class DataService extends IDataService {
     listPlayers() {
         return Array.from(this.players.values());
     }
+
+    getPlayerGrid(playerID) {
+        const player = this.players.get(playerID);
+        if (!player) {
+            throw new Error(`Player with ID ${playerID} not found.`);
+        }
+        return player.grid.getGridState();
+    }
+
+    isPlacementValid(playerID, startX, startY, length, direction) {
+        const player = this.players.get(playerID);
+        if (!player) {
+            throw new Error(`Player with ID ${playerID} not found.`);
+        }
+
+        return player.grid.isPlacementValid(startX, startY, length, direction);
+    }
+
+    placeShip(playerID, startX, startY, length, direction) {
+        const player = this.players.get(playerID);
+        if (!player) {
+            throw new Error(`Player with ID ${playerID} not found.`);
+        }
+        player.grid.placeShip(startX, startY, length, direction);
+    }
+
+    attackPlayer(playerID, x, y) {
+        const player = this.players.get(playerID);
+        if (!player) {
+            throw new Error(`Player with ID ${playerID} not found.`);
+        }
+        return player.grid.attack(x, y);
+    }
 }
 ```
-
-[See integration with connect feature](008_connect.md#integration)
 
 ##
 

@@ -101,4 +101,12 @@ refactor: rename features
 feat(data_service): integration with connect feature
 ```
 
+#### 30
+
+```plaintext
+feat(grid): grid feature
+
+- Placing fleet use case
+```
+
 [Back](index.md)
